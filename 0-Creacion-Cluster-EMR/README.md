@@ -26,3 +26,26 @@ $ aws s3 ls s3://lmtorresv-datalake/
 2025-11-15 15:03:50        208 emr-cluster-config.json
 2025-11-15 15:07:40        124 install-python-libs.sh
 ```
+
+## Creación del clúster
+
+### Lo esencial
+
+Ahora sí fui a crear el clúster, apoyándome en recursos almacenados
+en el bucket S3. Usé esta configuración:
+
+- Versión de Amazon EMR: emr-7.10.0 (como en la guía)
+- Paquete de aplicaciones: HCatalog, Hue, Livy, Zeppelin, Flink,
+  Hadoop, JupyterEnterpriseGateway, Tez, Hive, JupyterHub, Spark
+- Configuración del Catálogo de datos de AWS Glue:
+  - [x] Usar para metadatos de la tabla de Hive
+  - [x] Usar para metadatos de la tabla de Spark
+
+> [!NOTE]
+>
+> Estas dos últimas configuraciones son necesarias para que luego al usar
+> Hue podamos ver las tablas que maneja Hive. Si uno no las activa, luego
+> sucede como en clase que no podíamos ver la tabla.
+
+![Configuración básica del clúster.](screenshots/03-configuracion-esencial-cluster.png)
+

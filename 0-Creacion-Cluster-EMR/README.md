@@ -122,3 +122,18 @@ Si uno lo quisiera clonar con AWS CLI, puede usar los comandos en
 ### Activación de acceso público
 
 ![Activación de acceso público.](screenshots/12-cluster-publico.png)
+
+### Apertura de puertos
+
+Abrí los siguientes puertos en el grupo de seguridad del nodo maestro:
+
+| Puerto  | Propósito |
+|--:|--:|
+| 22 | SSH |
+| 8888 | Hue |
+| 8890 |  Zeppelin |
+| 9443 | JupyterHub |
+| 9870 | HDFS Name Node |
+| 14000 | No sé |
+
+![Abriendo puertos.](screenshots/13-apertura-puertos.png)

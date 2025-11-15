@@ -1,0 +1,16 @@
+aws emr create-cluster \
+ --name "lmtorresv-emr-cluster" \
+ --log-uri "s3://lmtorresv-datalake/emr-cluster-logs" \
+ --release-label "emr-7.10.0" \
+ --service-role "arn:aws:iam::905418486874:role/EMR_DefaultRole" \
+ --termination-protected \
+ --unhealthy-node-replacement \
+ --ec2-attributes '{"InstanceProfile":"EMR_EC2_DefaultRole","EmrManagedMasterSecurityGroup":"sg-009d1fd8966dd44fc","EmrManagedSlaveSecurityGroup":"sg-06df89d6b687fa286","KeyName":"vockey","AdditionalMasterSecurityGroups":[],"AdditionalSlaveSecurityGroups":[],"SubnetIds":["subnet-01e23e9f36b05b73d"]}' \
+ --tags 'bigdata-labs=' \
+ --applications Name=Flink Name=HCatalog Name=Hadoop Name=Hive Name=Hue Name=JupyterEnterpriseGateway Name=JupyterHub Name=Livy Name=Spark Name=Tez Name=Zeppelin \
+ --configurations '[{"Classification":"jupyter-s3-conf","Properties":{"s3.persistence.bucket":"lmtorresv-datalake","s3.persistence.enabled":"true"}},{"Classification":"spark-hive-site","Properties":{"hive.metastore.client.factory.class":"com.amazonaws.glue.catalog.metastore.AWSGlueDataCatalogHiveClientFactory"}}]' \
+ --instance-groups '[{"InstanceCount":1,"InstanceGroupType":"TASK","Name":"Tarea - 1","InstanceType":"m4.large","EbsConfiguration":{"EbsBlockDeviceConfigs":[{"VolumeSpecification":{"VolumeType":"gp2","SizeInGB":32},"VolumesPerInstance":1}]}},{"InstanceCount":1,"InstanceGroupType":"CORE","Name":"Central","InstanceType":"m4.large","EbsConfiguration":{"EbsBlockDeviceConfigs":[{"VolumeSpecification":{"VolumeType":"gp2","SizeInGB":32},"VolumesPerInstance":1}]}},{"InstanceCount":1,"InstanceGroupType":"MASTER","Name":"Principal","InstanceType":"m4.large","EbsConfiguration":{"EbsBlockDeviceConfigs":[{"VolumeSpecification":{"VolumeType":"gp2","SizeInGB":32},"VolumesPerInstance":1}]}}]' \
+ --bootstrap-actions '[{"Args":[],"Name":"Install Python 3rd-party libraries","Path":"s3://lmtorresv-datalake/install-python-libs.sh"}]' \
+ --auto-scaling-role "arn:aws:iam::905418486874:role/EMR_AutoScaling_DefaultRole" \
+ --scale-down-behavior "TERMINATE_AT_TASK_COMPLETION" \
+ --region "us-east-1"

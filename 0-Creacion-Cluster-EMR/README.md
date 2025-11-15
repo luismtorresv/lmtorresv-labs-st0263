@@ -61,3 +61,15 @@ que hacen el laboratorio de AWS:
 Acá están los grupos de seguridad de EC2 administrados por EMR:
 
 ![Redes.](screenshots/05-firewall.png)
+
+### Acciones de arranque (y logs)
+
+Cargué el archivo [`install-python-libs.sh`](install-python-libs.sh) al bucket
+S3 y lo configuré como acción de arranque. El enlace en Markdown debería llevar
+a los contenidos de ese archivo en el repositorio.
+
+![Acciones de arranque](screenshots/06-acciones_arranque-logs.png)
+
+Además, creé un directorio (o «prefijo») en el bucket de S3 para guardar los
+registros del clúster. No es súper importante, pero preferí tener todo en un
+mismo sitio a que me creara más buckets.

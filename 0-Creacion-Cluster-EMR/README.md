@@ -55,3 +55,9 @@ Usé el tipo de instancia de EC2 `m4.large`, pues así lo sugería una guía de 
 que hacen el laboratorio de AWS:
 
 ![Configuración del clúster.](screenshots/04-instancias.png)
+
+### Configuración de redes
+
+Acá están los grupos de seguridad de EC2 administrados por EMR:
+
+![Redes.](screenshots/05-firewall.png)

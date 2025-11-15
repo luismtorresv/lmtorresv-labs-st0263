@@ -98,3 +98,10 @@ Yo lo adapté en [`emr-cluster-config.json`](emr-cluster-config.json) con el
 nombre de mi bucket y lo cargué a S3:
 
 ![Configuración del software.](screenshots/07-configuracion-software.png)
+
+## Par de claves y roles
+
+No hay mucho qué decir.
+
+![Par de claves.](screenshots/08-par-claves.png)
+![Roles.](screenshots/09-roles.png)

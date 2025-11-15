@@ -73,3 +73,28 @@ a los contenidos de ese archivo en el repositorio.
 Además, creé un directorio (o «prefijo») en el bucket de S3 para guardar los
 registros del clúster. No es súper importante, pero preferí tener todo en un
 mismo sitio a que me creara más buckets.
+
+### Configuración del software
+
+Como explican
+[en la documentación de AWS](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-jupyterhub-s3.html),
+para tener persistencia de los _notebooks_ se puede configurar el clúster de
+JupyterHub en Amazon EMR para que los guarde en AWS S3. Este es el ejemplo que
+dan en esa página:
+
+```json
+[
+    {
+        "Classification": "jupyter-s3-conf",
+        "Properties": {
+            "s3.persistence.enabled": "true",
+            "s3.persistence.bucket": "MyJupyterBackups"
+        }
+    }
+]
+```
+
+Yo lo adapté en [`emr-cluster-config.json`](emr-cluster-config.json) con el
+nombre de mi bucket y lo cargué a S3:
+
+![Configuración del software.](screenshots/07-configuracion-software.png)

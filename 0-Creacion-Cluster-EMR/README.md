@@ -137,3 +137,18 @@ Abrí los siguientes puertos en el grupo de seguridad del nodo maestro:
 | 14000 | No sé |
 
 ![Abriendo puertos.](screenshots/13-apertura-puertos.png)
+
+## Hue
+
+Entré a la URL de la interfaz gráfica para Hue en el enlace que proporciona la
+consola de AWS: <http://ec2-44-221-67-165.compute-1.amazonaws.com:8888/>
+
+Configuré el usuario `hadoop` con una contraseña que no voy a publicar acá
+porque tampoco estamos tan a nuestras anchas ;)
+
+> [!NOTE]
+>
+> Nota por curiosidad y poco relevante:
+> AWS en español le dice «Tonalidad» a Hue.
+
+![Hue al inicio.](screenshots/14-hue-inicio.png)

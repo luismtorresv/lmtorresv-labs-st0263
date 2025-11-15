@@ -116,3 +116,9 @@ Si uno lo quisiera clonar con AWS CLI, puede usar los comandos en
 [`aws-cli-create-cluster-script.bash`](aws-cli-create-cluster-script.bash):
 
 ![Recrear con AWS CLI.](screenshots/11-clonar-cluster-aws_cli.png)
+
+## Posconfiguración del clúster
+
+### Activación de acceso público
+
+![Activación de acceso público.](screenshots/12-cluster-publico.png)

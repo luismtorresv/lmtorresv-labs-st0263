@@ -49,3 +49,9 @@ en el bucket S3. Usé esta configuración:
 
 ![Configuración básica del clúster.](screenshots/03-configuracion-esencial-cluster.png)
 
+### Configuración de las instancias
+
+Usé el tipo de instancia de EC2 `m4.large`, pues así lo sugería una guía de los
+que hacen el laboratorio de AWS:
+
+![Configuración del clúster.](screenshots/04-instancias.png)

@@ -105,3 +105,14 @@ No hay mucho qué decir.
 
 ![Par de claves.](screenshots/08-par-claves.png)
 ![Roles.](screenshots/09-roles.png)
+
+## Creación exitosa
+
+Alrededor de 21 minutos después, el clúster estaba esperando órdenes:
+
+![Creación exitosa.](screenshots/10-cluster-creado.png)
+
+Si uno lo quisiera clonar con AWS CLI, puede usar los comandos en
+[`aws-cli-create-cluster-script.bash`](aws-cli-create-cluster-script.bash):
+
+![Recrear con AWS CLI.](screenshots/11-clonar-cluster-aws_cli.png)

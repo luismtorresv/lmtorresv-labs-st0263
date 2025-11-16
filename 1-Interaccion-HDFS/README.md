@@ -300,3 +300,41 @@ drwxr-xr-x   - hadoop hdfsadmingroup          0 2025-11-16 16:22 /user/hadoop/da
 -rw-r--r--   1 hadoop hdfsadmingroup        567 2025-11-16 16:22 /user/hadoop/datasets/sample_data.csv
 drwxr-xr-x   - hadoop hdfsadmingroup          0 2025-11-16 16:22 /user/hadoop/datasets/spark
 ```
+
+## Copiar archivos de HDFS hacia el sistema de archivos local
+
+Creé el directorio `~/mis_datasets`:
+
+```
+[hadoop@ip-172-31-79-60 ~]$ mkdir ~/mis_datasets
+[hadoop@ip-172-31-79-60 ~]$ ls ~/mis_datasets
+```
+
+Creé los archivos usando un glob (`*`) con `get` en `gutenberg-small`:
+
+```
+[hadoop@ip-172-31-79-60 ~]$ hdfs dfs -get /user/hadoop/datasets/gutenberg-small/* ~/mis_datasets
+```
+
+Verifiqué que existan:
+
+```
+[hadoop@ip-172-31-79-60 ~]$ ls -l ~/mis_datasets
+total 4076
+-rw-r--r--. 1 hadoop hadoop   5717 Nov 16 16:39 AbrahamLincoln___LincolnLetters.txt
+-rw-r--r--. 1 hadoop hadoop  21208 Nov 16 16:39 AbrahamLincoln___LincolnsFirstInauguralAddress.txt
+-rw-r--r--. 1 hadoop hadoop   1618 Nov 16 16:39 AbrahamLincoln___LincolnsGettysburgAddressGivenNovember-19-1863.txt
+-rw-r--r--. 1 hadoop hadoop 257455 Nov 16 16:39 AbrahamLincoln___LincolnsInauguralsAddressesandLettersSelections.txt
+-rw-r--r--. 1 hadoop hadoop   4020 Nov 16 16:39 AbrahamLincoln___LincolnsSecondInauguralAddress.txt
+-rw-r--r--. 1 hadoop hadoop 507462 Nov 16 16:39 AbrahamLincoln___SpeechesandLettersofAbrahamLincoln1832-1865.txt
+-rw-r--r--. 1 hadoop hadoop 165030 Nov 16 16:39 AbrahamLincoln___StateoftheUnionAddresses.txt
+-rw-r--r--. 1 hadoop hadoop   3848 Nov 16 16:39 AbrahamLincoln___TheEmancipationProclamation.txt
+-rw-r--r--. 1 hadoop hadoop  44772 Nov 16 16:39 AbrahamLincoln___TheLifeandPublicServiceofGeneralZacharyTaylorAnAddress.txt
+-rw-r--r--. 1 hadoop hadoop 451186 Nov 16 16:39 AbrahamLincoln___TheWritingsofAbrahamLincolnVolume1.txt
+-rw-r--r--. 1 hadoop hadoop 496055 Nov 16 16:39 AbrahamLincoln___TheWritingsofAbrahamLincolnVolume2.txt
+-rw-r--r--. 1 hadoop hadoop 250854 Nov 16 16:39 AbrahamLincoln___TheWritingsofAbrahamLincolnVolume3.txt
+-rw-r--r--. 1 hadoop hadoop 206449 Nov 16 16:39 AbrahamLincoln___TheWritingsofAbrahamLincolnVolume4.txt
+-rw-r--r--. 1 hadoop hadoop 677845 Nov 16 16:39 AbrahamLincoln___TheWritingsofAbrahamLincolnVolume5.txt
+-rw-r--r--. 1 hadoop hadoop 584975 Nov 16 16:39 AbrahamLincoln___TheWritingsofAbrahamLincolnVolume6.txt
+-rw-r--r--. 1 hadoop hadoop 466500 Nov 16 16:39 AbrahamLincoln___TheWritingsofAbrahamLincolnVolume7.txt
+```

@@ -113,7 +113,7 @@ Alrededor de 21 minutos después, el clúster estaba esperando órdenes:
 ![Creación exitosa.](screenshots/10-cluster-creado.png)
 
 Si uno lo quisiera clonar con AWS CLI, puede usar los comandos en
-[`aws-cli-create-cluster-script.bash`](aws-cli-create-cluster-script.bash):
+[`aws-cli-create-cluster-script.bash`](emr-cluster-scripts/aws-cli-create-cluster-script.bash):
 
 ![Recrear con AWS CLI.](screenshots/11-clonar-cluster-aws_cli.png)
 
@@ -299,7 +299,7 @@ al respecto, excepto esperar:
 ![Máquinas spot.](screenshots/15-spot.png)
 
 Opté por terminar el clúster y
-[montar uno nuevo](aws-cli-create-nospotmachinesplease-cluster-script.bash)
+[montar uno nuevo](emr-cluster-scripts/aws-cli-create-nospotmachinesplease-cluster-script.bash)
 pero sin el modelo de Spot:
 
 ![No spot machines please.](screenshots/16-nospotmachinesplease.png)

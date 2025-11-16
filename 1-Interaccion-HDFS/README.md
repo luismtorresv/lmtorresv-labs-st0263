@@ -254,3 +254,49 @@ drwxrwxrwt   - yarn   hdfsadmingroup          0 2025-11-16 15:45 /tmp/entity-fil
 drwxrwxrwx   - mapred mapred                  0 2025-11-16 15:40 /tmp/hadoop-yarn
 drwx-wx-wx   - hive   hdfsadmingroup          0 2025-11-16 15:42 /tmp/hive
 ```
+
+## Copiar los datasets desde el sistema de archivos local
+
+Usé `copyFromLocal`:
+
+```
+[hadoop@ip-172-31-79-60 ~]$ hdfs dfs -copyFromLocal ~/st0263/datasets/* /user/hadoop/datasets
+copyFromLocal: `/user/hadoop/datasets/gutenberg-small/AbrahamLincoln___LincolnLetters.txt': File exists
+copyFromLocal: `/user/hadoop/datasets/gutenberg-small/AbrahamLincoln___LincolnsFirstInauguralAddress.txt': File exists
+copyFromLocal: `/user/hadoop/datasets/gutenberg-small/AbrahamLincoln___LincolnsGettysburgAddressGivenNovember-19-1863.txt': File exists
+copyFromLocal: `/user/hadoop/datasets/gutenberg-small/AbrahamLincoln___LincolnsInauguralsAddressesandLettersSelections.txt': File exists
+copyFromLocal: `/user/hadoop/datasets/gutenberg-small/AbrahamLincoln___LincolnsSecondInauguralAddress.txt': File exists
+copyFromLocal: `/user/hadoop/datasets/gutenberg-small/AbrahamLincoln___SpeechesandLettersofAbrahamLincoln1832-1865.txt': File exists
+copyFromLocal: `/user/hadoop/datasets/gutenberg-small/AbrahamLincoln___StateoftheUnionAddresses.txt': File exists
+copyFromLocal: `/user/hadoop/datasets/gutenberg-small/AbrahamLincoln___TheEmancipationProclamation.txt': File exists
+copyFromLocal: `/user/hadoop/datasets/gutenberg-small/AbrahamLincoln___TheLifeandPublicServiceofGeneralZacharyTaylorAnAddress.txt': File exists
+copyFromLocal: `/user/hadoop/datasets/gutenberg-small/AbrahamLincoln___TheWritingsofAbrahamLincolnVolume1.txt': File exists
+copyFromLocal: `/user/hadoop/datasets/gutenberg-small/AbrahamLincoln___TheWritingsofAbrahamLincolnVolume2.txt': File exists
+copyFromLocal: `/user/hadoop/datasets/gutenberg-small/AbrahamLincoln___TheWritingsofAbrahamLincolnVolume3.txt': File exists
+copyFromLocal: `/user/hadoop/datasets/gutenberg-small/AbrahamLincoln___TheWritingsofAbrahamLincolnVolume4.txt': File exists
+copyFromLocal: `/user/hadoop/datasets/gutenberg-small/AbrahamLincoln___TheWritingsofAbrahamLincolnVolume5.txt': File exists
+copyFromLocal: `/user/hadoop/datasets/gutenberg-small/AbrahamLincoln___TheWritingsofAbrahamLincolnVolume6.txt': File exists
+copyFromLocal: `/user/hadoop/datasets/gutenberg-small/AbrahamLincoln___TheWritingsofAbrahamLincolnVolume7.txt': File exists
+```
+
+Notar que las advertencias de archivos ya existentes son debido a los
+pasos anteriores donde ya se había copiado `gutenberg-small.`
+
+Listé los archivos para comprobar que todo estaba copiado:
+
+```
+[hadoop@ip-172-31-79-60 ~]$ hdfs dfs -ls /user/hadoop/datasets
+Found 12 items
+-rw-r--r--   1 hadoop hdfsadmingroup     780058 2025-11-16 16:22 /user/hadoop/datasets/airlines.csv
+drwxr-xr-x   - hadoop hdfsadmingroup          0 2025-11-16 16:22 /user/hadoop/datasets/all-news
+-rw-r--r--   1 hadoop hdfsadmingroup         80 2025-11-16 16:22 /user/hadoop/datasets/clientes.csv
+drwxr-xr-x   - hadoop hdfsadmingroup          0 2025-11-16 16:22 /user/hadoop/datasets/covid19
+drwxr-xr-x   - hadoop hdfsadmingroup          0 2025-11-16 16:22 /user/hadoop/datasets/flights
+drwxr-xr-x   - hadoop hdfsadmingroup          0 2025-11-16 16:22 /user/hadoop/datasets/gutenberg
+drwxr-xr-x   - hadoop hdfsadmingroup          0 2025-11-16 16:11 /user/hadoop/datasets/gutenberg-small
+drwxr-xr-x   - hadoop hdfsadmingroup          0 2025-11-16 16:22 /user/hadoop/datasets/onu
+drwxr-xr-x   - hadoop hdfsadmingroup          0 2025-11-16 16:22 /user/hadoop/datasets/otros
+drwxr-xr-x   - hadoop hdfsadmingroup          0 2025-11-16 16:22 /user/hadoop/datasets/retail_logs
+-rw-r--r--   1 hadoop hdfsadmingroup        567 2025-11-16 16:22 /user/hadoop/datasets/sample_data.csv
+drwxr-xr-x   - hadoop hdfsadmingroup          0 2025-11-16 16:22 /user/hadoop/datasets/spark
+```

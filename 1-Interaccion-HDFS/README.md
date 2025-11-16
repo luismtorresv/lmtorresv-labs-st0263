@@ -1,5 +1,11 @@
 # Laboratorio 1: Interacción con el HDFS de Hadoop
 
+## Preparación
+
+### Cargar los datasets al bucket S3
+
+![Carga de datasets a S3.](screenshots/02-carga-datasets.png)
+
 ## Conexión vía SSH
 
 Me conecté al nodo principal mediante SSH:

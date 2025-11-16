@@ -36,7 +36,8 @@ La primera parte se trata de configurar un clúster de **Elastic MapReduce
 (EMR)** usando la consola de AWS. Esta se borra pasadas las cuatro horas que nos
 provee el servicio de AWS Academy. Para no tener inconvenientes con esto,
 creamos un bucket de **AWS S3** para guardar los resultados del trabajo (como si
-fuera un datalake).
+fuera un datalake). Probaremos que podemos correr Spark desde JupyterHub
+y Zeppelin.
 
 ### Cargando los datos
 

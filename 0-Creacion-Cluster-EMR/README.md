@@ -316,3 +316,11 @@ correr el simple comando de Spark :)
 
 El _notebook_ de esto tan sencillo se encuentra en
 [`notebooks/prueba-jupyterhub.ipynb`](notebooks/prueba-jupyterhub.ipynb).
+
+## Zeppelin
+
+También entré a Zeppelin para correr los mismos comandos que en JupyterHub:
+
+![Zeppelin.](screenshots/17-zeppelin.png)
+
+Este es el [cuaderno de Zeppelin](notebooks/prueba-zeppelin.zpln).

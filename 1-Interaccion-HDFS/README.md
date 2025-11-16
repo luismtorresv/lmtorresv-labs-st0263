@@ -101,3 +101,22 @@ ls: `/user/hadoop/datasets': No such file or directory
 [hadoop@ip-172-31-74-184 st0263]$ hdfs dfs -mkdir /user/hadoop/datasets
 [hadoop@ip-172-31-74-184 st0263]$
 ```
+
+## Clonar el repositorio
+
+```
+[hadoop@ip-172-31-79-60 ~]$ git clone https://github.com/luismtorresv/st0263.git
+Cloning into 'st0263'...
+remote: Enumerating objects: 400, done.
+remote: Counting objects: 100% (119/119), done.
+remote: Compressing objects: 100% (61/61), done.
+remote: Total 400 (delta 71), reused 99 (delta 58), pack-reused 281 (from 1)
+Receiving objects: 100% (400/400), 37.56 MiB | 38.35 MiB/s, done.
+Resolving deltas: 100% (171/171), done.
+```
+
+> [!NOTE]
+>
+> Creé un fork del repositorio. Por eso usa mi cuenta.
+>
+> Además, moví `datasets` a la raíz (junto con otros cambios).

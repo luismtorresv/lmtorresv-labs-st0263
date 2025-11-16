@@ -125,7 +125,7 @@ Si uno lo quisiera clonar con AWS CLI, puede usar los comandos en
 
 ### Apertura de puertos
 
-Abrí los siguientes puertos en el grupo de seguridad del nodo maestro:
+Abrí los siguientes puertos en el grupo de seguridad del nodo principal:
 
 | Puerto  | Propósito |
 |--:|--:|

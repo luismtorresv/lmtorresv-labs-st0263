@@ -40,7 +40,7 @@ fuera un datalake).
 
 ### Cargando los datos
 
-La segunda parte se trata de conectarse al nodo maestro del clúster EMR para
+La segunda parte se trata de conectarse al nodo principal del clúster EMR para
 realizar operaciones comunes. Por ejemplo, copiar archivos o directorios que
 están en S3 al **Hadoop Distributed File System (HDFS)**. Estas operaciones las
 haremos tanto por una terminal, a través de una conexión SSH, como por la

@@ -304,3 +304,10 @@ Opté por terminar el clúster y montar uno nuevo pero sin el modelo de Spot:
 
 Seguí las instrucciones anteriores mías – menos mal lo fui documentando – y pude
 crear otro clúster que, ojalá, no se caiga con el comando más simple.
+
+### Por fin entrando a JupyterHub
+
+Después de esperar a que se creara el clúster, entré a JupyterHub y por fin pude
+correr el simple comando de Spark :)
+
+![Por fin JupyterHub.](screenshots/16-jupyterhub.png)

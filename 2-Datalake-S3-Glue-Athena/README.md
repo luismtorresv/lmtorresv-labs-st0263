@@ -89,3 +89,27 @@ esta parte, no se usa Athena directamente.
 ![Tabla de export.](screenshots/10-tabla-export.png)
 
 (A este no le generé estadísticas de columnas.)
+
+## Consulta
+
+### Configuración de Athena
+
+Anteriorme creé un directorio `athena` en el bucket S3 para guardar allí
+los resultados de las consultas de Athena. Acá configuré Athena para que use
+este directorio:
+
+![Configuración de Athena.](screenshots/11-configuracion-athena.png)
+
+### Consultas básicas de vista previa de la tabla
+
+#### `export`
+
+![Consulta de export.](screenshots/12-consulta-export.png)
+
+#### `hdi`
+
+![Consulta de hdi.](screenshots/13-consulta-hdi.png)
+
+#### `lifeex < 60`
+
+![lifeex < 60.](screenshots/14-consulta-lifeex.png)

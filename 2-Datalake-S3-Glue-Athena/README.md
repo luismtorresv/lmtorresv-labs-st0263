@@ -34,3 +34,33 @@ Seleccioné la ubicación de los datos de la ONU en S3:
 Verificación antes de crear el crawler con todos los detalles:
 
 ![Crawler de Glue.](screenshots/05-crawler-confirmation.png)
+
+### Corriendo el crawler
+
+Corrí el crawler manualmente:
+
+![C](screenshots/06-crawler-run.png)
+
+Log en AWS CloudWatch:
+
+```
+[0f2f2a30-c09d-4485-ba3c-d37e8fe0148b] BENCHMARK : Running Start Crawl for Crawler onudb-crawler
+[0f2f2a30-c09d-4485-ba3c-d37e8fe0148b] BENCHMARK : Classification complete, writing results to database onudb
+[0f2f2a30-c09d-4485-ba3c-d37e8fe0148b] INFO : Crawler configured with Configuration
+{
+    "Version": 1,
+    "CreatePartitionIndex": true
+}
+ and SchemaChangePolicy
+{
+    "UpdateBehavior": "UPDATE_IN_DATABASE",
+    "DeleteBehavior": "DEPRECATE_IN_DATABASE"
+}
+. Note that values in the Configuration override values in the SchemaChangePolicy for S3 Targets.
+[0f2f2a30-c09d-4485-ba3c-d37e8fe0148b] INFO : Created table export in database onudb
+[0f2f2a30-c09d-4485-ba3c-d37e8fe0148b] INFO : Created table hdi in database onudb
+[0f2f2a30-c09d-4485-ba3c-d37e8fe0148b] BENCHMARK : Finished writing to Catalog
+[0f2f2a30-c09d-4485-ba3c-d37e8fe0148b] INFO : Run Summary For TABLE:
+[0f2f2a30-c09d-4485-ba3c-d37e8fe0148b] INFO : ADD: 2
+[0f2f2a30-c09d-4485-ba3c-d37e8fe0148b] BENCHMARK : Crawler has finished running and is in state READY
+```

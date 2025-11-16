@@ -129,3 +129,10 @@ Verifiqué que se reflejaran los cambios en el _Table Browser_:
 Y comprobé que haya interpretado bien el header con una muestra:
 
 ![Muestra de datos en Table Browser.](screenshots/06-sample-hdi.png)
+
+> [!NOTE]
+>
+> Voy a asumir que _no es necesario_ crear la tabla con los otros
+> métodos (como tabla externa con HDFS y S3). Eso está muy
+> bien, pero no creo que tenga sentido tumbar esta tabla
+> solo para usar esos otros métodos

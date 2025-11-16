@@ -311,3 +311,6 @@ Después de esperar a que se creara el clúster, entré a JupyterHub y por fin p
 correr el simple comando de Spark :)
 
 ![Por fin JupyterHub.](screenshots/16-jupyterhub.png)
+
+El _notebook_ de esto tan sencillo se encuentra en
+[`notebooks/prueba-jupyterhub.ipynb`](notebooks/prueba-jupyterhub.ipynb).

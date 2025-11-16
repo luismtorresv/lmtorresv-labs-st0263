@@ -298,7 +298,9 @@ al respecto, excepto esperar:
 
 ![Máquinas spot.](screenshots/15-spot.png)
 
-Opté por terminar el clúster y montar uno nuevo pero sin el modelo de Spot:
+Opté por terminar el clúster y
+[montar uno nuevo](aws-cli-create-nospotmachinesplease-cluster-script.bash)
+pero sin el modelo de Spot:
 
 ![No spot machines please.](screenshots/16-nospotmachinesplease.png)
 

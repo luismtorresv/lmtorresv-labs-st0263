@@ -1,6 +1,6 @@
 # Laboratorio 2: Datalake con motor de consulta SQL usando los servicios S3, Glue, Athena
 
-## Ingesta de datos en AWS S3
+## Ingesta de datos (AWS S3)
 
 Ya lo había creado y configurado con acceso público desde
 [el laboratorio 0](../0-Creacion-Cluster-EMR/README.md#creación-de-bucket-en-s3).
@@ -17,7 +17,7 @@ Acá específicamente están los datos de la ONU:
 
 ![Datos de la ONU.](screenshots/02-s3-onu.png)
 
-## Catalogación
+## Catalogación (AWS Glue)
 
 ### Creación de la base de datos
 
@@ -90,7 +90,7 @@ esta parte, no se usa Athena directamente.
 
 (A este no le generé estadísticas de columnas.)
 
-## Consulta
+## Consulta (AWS Athena)
 
 ### Configuración de Athena
 

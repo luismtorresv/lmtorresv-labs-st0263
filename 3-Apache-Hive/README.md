@@ -136,3 +136,51 @@ Y comprobé que haya interpretado bien el header con una muestra:
 > métodos (como tabla externa con HDFS y S3). Eso está muy
 > bien, pero no creo que tenga sentido tumbar esta tabla
 > solo para usar esos otros métodos
+
+## Realizar consultas y cálculos sobre la tabla `hdi`
+
+### `gni > 2000`
+
+#### Consulta
+
+```sql
+SELECT
+    country,
+    gni
+FROM
+    hdi
+WHERE
+    gni > 2000;
+```
+
+#### Confirmación visual
+
+![Consulta simple.](screenshots/07-consulta-simple.png)
+
+
+#### Output
+
+```
+INFO  : Compiling command(queryId=hive_20251116224306_d266db8e-30de-45ba-8c51-14e9bba53475): SELECT
+    country,
+    gni
+FROM
+    hdi
+WHERE
+    gni > 2000
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:country, type:string, comment:null), FieldSchema(name:gni, type:int, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20251116224306_d266db8e-30de-45ba-8c51-14e9bba53475); Time taken: 0.072 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=hive_20251116224306_d266db8e-30de-45ba-8c51-14e9bba53475): SELECT
+    country,
+    gni
+FROM
+    hdi
+WHERE
+    gni > 2000
+INFO  : Completed executing command(queryId=hive_20251116224306_d266db8e-30de-45ba-8c51-14e9bba53475); Time taken: 0.0 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+```

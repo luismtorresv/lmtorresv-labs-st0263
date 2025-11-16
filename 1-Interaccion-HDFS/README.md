@@ -338,3 +338,25 @@ total 4076
 -rw-r--r--. 1 hadoop hadoop 584975 Nov 16 16:39 AbrahamLincoln___TheWritingsofAbrahamLincolnVolume6.txt
 -rw-r--r--. 1 hadoop hadoop 466500 Nov 16 16:39 AbrahamLincoln___TheWritingsofAbrahamLincolnVolume7.txt
 ```
+
+También usé `copyToLocal`, pero ya existían los archivos:
+
+```
+[hadoop@ip-172-31-79-60 ~]$ hdfs dfs -copyToLocal /user/hadoop/datasets/gutenberg-small/* ~/mis_datasets/
+copyToLocal: `/home/hadoop/mis_datasets/AbrahamLincoln___LincolnLetters.txt': File exists
+copyToLocal: `/home/hadoop/mis_datasets/AbrahamLincoln___LincolnsFirstInauguralAddress.txt': File exists
+copyToLocal: `/home/hadoop/mis_datasets/AbrahamLincoln___LincolnsGettysburgAddressGivenNovember-19-1863.txt': File exists
+copyToLocal: `/home/hadoop/mis_datasets/AbrahamLincoln___LincolnsInauguralsAddressesandLettersSelections.txt': File exists
+copyToLocal: `/home/hadoop/mis_datasets/AbrahamLincoln___LincolnsSecondInauguralAddress.txt': File exists
+copyToLocal: `/home/hadoop/mis_datasets/AbrahamLincoln___SpeechesandLettersofAbrahamLincoln1832-1865.txt': File exists
+copyToLocal: `/home/hadoop/mis_datasets/AbrahamLincoln___StateoftheUnionAddresses.txt': File exists
+copyToLocal: `/home/hadoop/mis_datasets/AbrahamLincoln___TheEmancipationProclamation.txt': File exists
+copyToLocal: `/home/hadoop/mis_datasets/AbrahamLincoln___TheLifeandPublicServiceofGeneralZacharyTaylorAnAddress.txt': File exists
+copyToLocal: `/home/hadoop/mis_datasets/AbrahamLincoln___TheWritingsofAbrahamLincolnVolume1.txt': File exists
+copyToLocal: `/home/hadoop/mis_datasets/AbrahamLincoln___TheWritingsofAbrahamLincolnVolume2.txt': File exists
+copyToLocal: `/home/hadoop/mis_datasets/AbrahamLincoln___TheWritingsofAbrahamLincolnVolume3.txt': File exists
+copyToLocal: `/home/hadoop/mis_datasets/AbrahamLincoln___TheWritingsofAbrahamLincolnVolume4.txt': File exists
+copyToLocal: `/home/hadoop/mis_datasets/AbrahamLincoln___TheWritingsofAbrahamLincolnVolume5.txt': File exists
+copyToLocal: `/home/hadoop/mis_datasets/AbrahamLincoln___TheWritingsofAbrahamLincolnVolume6.txt': File exists
+copyToLocal: `/home/hadoop/mis_datasets/AbrahamLincoln___TheWritingsofAbrahamLincolnVolume7.txt': File exists
+```

@@ -98,3 +98,34 @@ INFO  : Completed executing command(queryId=hive_20251116214257_af2173c3-3c22-46
 INFO  : OK
 INFO  : Concurrency mode is disabled, not creating a lock manager
 ```
+
+## Cargar datos a la tabla `hdi`
+
+Decidí cargarlos usando la CLI. Solo tuve que cambiar los parámetros al comando
+`hdfs`, con respecto a como estaban en la guía, para que funcionara:
+
+```shell
+[hadoop@ip-172-31-79-60 ~]$ hdfs dfs -cp \
+  /user/hadoop/datasets/onu/hdi-data.csv \
+  /user/hive/warehouse/lmtorresv.db/hdi
+```
+
+Y ahora aparece listado el archivo, tanto en la CLI…
+
+```shell
+[hadoop@ip-172-31-79-60 ~]$ hdfs dfs -ls /user/hive/warehouse/lmtorresv.db/hdi
+Found 1 items
+-rw-r--r--   1 hadoop hdfsadmingroup       9235 2025-11-16 21:52 /user/hive/warehouse/lmtorresv.db/hdi/hdi-data.csv
+```
+
+Como en Hue:
+
+![Datos cargados vistos desde Hue.](screenshots/04-datos-cargados.png)
+
+Verifiqué que se reflejaran los cambios en el _Table Browser_:
+
+![Datos cargados vistos desde Table Browser.](screenshots/05-nuevas-estadisticas-hdi.png)
+
+Y comprobé que haya interpretado bien el header con una muestra:
+
+![Muestra de datos en Table Browser.](screenshots/06-sample-hdi.png)

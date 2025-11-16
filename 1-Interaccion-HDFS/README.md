@@ -405,3 +405,31 @@ drwxr-xr-x   - hadoop hdfsadmingroup          0 2025-11-16 16:22 /user/hadoop/da
 [hadoop@ip-172-31-79-60 ~]$ hdfs dfs -ls -h /user/hadoop/datasets | grep clientes.csv
 -r--------   1 nobody hdfsadmingroup         80 2025-11-16 16:22 /user/hadoop/datasets/clientes.csv
 ```
+
+## Gestión de archivos vía Hue
+
+### Explorar archivos
+
+Comprobé que exista el directorio creado anteriormente:
+
+![Explorar archivos.](screenshots/03-hue-explorar.png)
+
+### Crear un directorio
+
+Creé un directorio para la prueba en Hue:
+
+![Crear directorio.](screenshots/04-hue-crear-directorio.png)
+
+### Subir archivos
+
+A este directorio, subí una
+[base de datos en CSV llamada "Twitter US Airline Sentiment"](https://www.kaggle.com/datasets/crowdflower/twitter-airline-sentiment)
+que descargué a mi portátil y subí por la interfaz gráfica:
+
+![Subiendo el archivo.](screenshots/05-hue-subir-archivos.png)
+
+### Ver contenido de un archivo
+
+Por último, vi el archivo recién subido:
+
+![Ver contenido.](screenshots/06-hue-ver-contenido.png)

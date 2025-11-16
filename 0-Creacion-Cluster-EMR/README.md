@@ -152,3 +152,155 @@ porque tampoco estamos tan a nuestras anchas ;)
 > AWS en español le dice «Tonalidad» a Hue.
 
 ![Hue al inicio.](screenshots/14-hue-inicio.png)
+
+## JupyterHub
+
+### Problema de las máquinas spot
+
+Acá me pasó algo molesto. Entré a JupyterHub, creé un cuaderno nuevo, y corrí
+la típica invocación de `spark`. Nada. Pasaron 5 minutos. 10 minutos. Nada.
+Al rato devolvió un error:
+
+```
+The code failed because of a fatal error:
+	Error sending http request and maximum retry encountered..
+
+Some things to try:
+a) Make sure Spark has enough available resources for Jupyter to create a Spark context.
+b) Contact your Jupyter administrator to make sure the Spark magics library is configured correctly.
+c) Restart the kernel.
+```
+
+Intenté reiniciar el kernel, pero ya nada respondía. Ni Hue, ni Hadoop. Nada.
+Decidí reiniciar las instancias de EC2, porque quizá ese era el problema, y pude
+volver a entrar. Solo que ahora el error era más grande:
+
+<details>
+<summary>
+Error más grande (dar clic para expandir).
+</summary>
+<pre>
+The code failed because of a fatal error:
+	Session 0 unexpectedly reached final status 'dead'. See logs:
+stdout:
+
+stderr:
+25/11/16 00:12:29 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+25/11/16 00:12:30 INFO DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at ip-172-31-71-203.ec2.internal/172.31.71.203:8032
+25/11/16 00:12:32 INFO Configuration: resource-types.xml not found
+25/11/16 00:12:32 INFO ResourceUtils: Unable to find 'resource-types.xml'.
+25/11/16 00:12:32 INFO Client: Verifying our application has not requested more than the maximum memory capability of the cluster (6144 MB per container)
+25/11/16 00:12:32 INFO Client: Will allocate AM container, with 1384 MB memory including 384 MB overhead
+25/11/16 00:12:32 INFO Client: Setting up container launch context for our AM
+25/11/16 00:12:32 INFO Client: Setting up the launch environment for our AM container
+25/11/16 00:12:33 INFO Client: Preparing resources for our AM container
+25/11/16 00:12:33 WARN Client: Failed to cleanup staging dir hdfs://ip-172-31-71-203.ec2.internal:8020/user/livy/.sparkStaging/application_1763251498199_0001
+org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot delete /user/livy/.sparkStaging/application_1763251498199_0001. Name node is in safe mode.
+The reported blocks 0 needs additional 1338 blocks to reach the threshold 0.9990 of total blocks 1340.
+The minimum number of live datanodes is not required. Safe mode will be turned off automatically once the thresholds have been reached. NamenodeHostName:ip-172-31-71-203.ec2.internal
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1679)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1666)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.delete(FSNamesystem.java:3405)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.delete(NameNodeRpcServer.java:1144)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.delete(ClientNamenodeProtocolServerSideTranslatorPB.java:737)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1227)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1378)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1297)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:439)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3538)
+
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:?]
+	at java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500) ~[?:?]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:481) ~[?:?]
+	at org.apache.hadoop.ipc.RemoteException.instantiateException(RemoteException.java:121) ~[hadoop-client-api-3.4.1-amzn-2.jar:?]
+	at org.apache.hadoop.ipc.RemoteException.unwrapRemoteException(RemoteException.java:88) ~[hadoop-client-api-3.4.1-amzn-2.jar:?]
+	at org.apache.hadoop.hdfs.DFSClient.delete(DFSClient.java:1694) ~[hadoop-client-api-3.4.1-amzn-2.jar:?]
+	at org.apache.hadoop.hdfs.DistributedFileSystem$19.doCall(DistributedFileSystem.java:1004) ~[hadoop-client-api-3.4.1-amzn-2.jar:?]
+	at org.apache.hadoop.hdfs.DistributedFileSystem$19.doCall(DistributedFileSystem.java:1001) ~[hadoop-client-api-3.4.1-amzn-2.jar:?]
+	at org.apache.hadoop.fs.FileSystemLinkResolver.resolve(FileSystemLinkResolver.java:81) ~[hadoop-client-api-3.4.1-amzn-2.jar:?]
+	at org.apache.hadoop.hdfs.DistributedFileSystem.delete(DistributedFileSystem.java:1011) ~[hadoop-client-api-3.4.1-amzn-2.jar:?]
+	at org.apache.spark.deploy.yarn.Client.cleanupStagingDirInternal$1(Client.scala:270) [spark-yarn_2.12-3.5.5-amzn-1.jar:3.5.5-amzn-1]
+	at org.apache.spark.deploy.yarn.Client.cleanupStagingDir(Client.scala:279) [spark-yarn_2.12-3.5.5-amzn-1.jar:3.5.5-amzn-1]
+	at org.apache.spark.deploy.yarn.Client.submitApplication(Client.scala:253) [spark-yarn_2.12-3.5.5-amzn-1.jar:3.5.5-amzn-1]
+	at org.apache.spark.deploy.yarn.Client.run(Client.scala:1370) [spark-yarn_2.12-3.5.5-amzn-1.jar:3.5.5-amzn-1]
+	at org.apache.spark.deploy.yarn.YarnClusterApplication.start(Client.scala:1818) [spark-yarn_2.12-3.5.5-amzn-1.jar:3.5.5-amzn-1]
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:1150) [spark-core_2.12-3.5.5-amzn-1.jar:3.5.5-amzn-1]
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:200) [spark-core_2.12-3.5.5-amzn-1.jar:3.5.5-amzn-1]
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:223) [spark-core_2.12-3.5.5-amzn-1.jar:3.5.5-amzn-1]
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:92) [spark-core_2.12-3.5.5-amzn-1.jar:3.5.5-amzn-1]
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1246) [spark-core_2.12-3.5.5-amzn-1.jar:3.5.5-amzn-1]
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1255) [spark-core_2.12-3.5.5-amzn-1.jar:3.5.5-amzn-1]
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala) [spark-core_2.12-3.5.5-amzn-1.jar:3.5.5-amzn-1]
+Caused by: org.apache.hadoop.ipc.RemoteException: Cannot delete /user/livy/.sparkStaging/application_1763251498199_0001. Name node is in safe mode.
+The reported blocks 0 needs additional 1338 blocks to reach the threshold 0.9990 of total blocks 1340.
+The minimum number of live datanodes is not required. Safe mode will be turned off automatically once the thresholds have been reached. NamenodeHostName:ip-172-31-71-203.ec2.internal
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1679)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1666)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.delete(FSNamesystem.java:3405)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.delete(NameNodeRpcServer.java:1144)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.delete(ClientNamenodeProtocolServerSideTranslatorPB.java:737)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1227)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1378)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1297)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:439)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3538)
+
+	at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1676) ~[hadoop-client-api-3.4.1-amzn-2.jar:?]
+	at org.apache.hadoop.ipc.Client.call(Client.java:1621) ~[hadoop-client-api-3.4.1-amzn-2.jar:?]
+	at org.apache.hadoop.ipc.Client.call(Client.java:1518) ~[hadoop-client-api-3.4.1-amzn-2.jar:?]
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Invoker.invoke(ProtobufRpcEngine2.java:258) ~[hadoop-client-api-3.4.1-amzn-2.jar:?]
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Invoker.invoke(ProtobufRpcEngine2.java:139) ~[hadoop-client-api-3.4.1-amzn-2.jar:?]
+	at jdk.proxy2.$Proxy29.delete(Unknown Source) ~[?:?]
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolTranslatorPB.lambda$delete$19(ClientNamenodeProtocolTranslatorPB.java:598) ~[hadoop-client-api-3.4.1-amzn-2.jar:?]
+	at org.apache.hadoop.ipc.internal.ShadedProtobufHelper.ipc(ShadedProtobufHelper.java:160) ~[hadoop-client-api-3.4.1-amzn-2.jar:?]
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolTranslatorPB.delete(ClientNamenodeProtocolTranslatorPB.java:598) ~[hadoop-client-api-3.4.1-amzn-2.jar:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:569) ~[?:?]
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invokeMethod(RetryInvocationHandler.java:437) ~[hadoop-client-api-3.4.1-amzn-2.jar:?]
+	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invokeMethod(RetryInvocationHandler.java:170) ~[hadoop-client-api-3.4.1-amzn-2.jar:?]
+	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invoke(RetryInvocationHandler.java:162) ~[hadoop-client-api-3.4.1-amzn-2.jar:?]
+	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invokeOnce(RetryInvocationHandler.java:100) ~[hadoop-client-api-3.4.1-amzn-2.jar:?]
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invoke(RetryInvocationHandler.java:366) ~[hadoop-client-api-3.4.1-amzn-2.jar:?]
+	at jdk.proxy2.$Proxy30.delete(Unknown Source) ~[?:?]
+	at org.apache.hadoop.hdfs.DFSClient.delete(DFSClient.java:1692) ~[hadoop-client-api-3.4.1-amzn-2.jar:?]
+	... 16 more
+Exception in thread "main" org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create directory /user/livy/.sparkStaging/application_1763251498199_0001. Name node is in safe mode.
+The reported blocks 0 needs additional 1338 blocks to reach the threshold 0.9990 of total blocks 1340.
+The minimum number of live datanodes is not required. Safe mode will be turned off automatically once the thresholds have been reached. NamenodeHostName:ip-172-31-71-203.ec2.internal.
+
+Some things to try:
+a) Make sure Spark has enough available resources for Jupyter to create a Spark context.
+b) Contact your Jupyter administrator to make sure the Spark magics library is configured correctly.
+c) Restart the kernel.
+</pre>
+</details>
+
+Resultó ser que, como había configurado las máquinas para que usaran el modelo
+Spot, donde AWS puede retomarlas si las necesita, me había quitado varias
+máquinas. O sea, tal cual no estaban corriendo y no podía hacer nada
+al respecto, excepto esperar:
+
+![Máquinas spot.](screenshots/15-spot.png)
+
+Opté por terminar el clúster y montar uno nuevo pero sin el modelo de Spot:
+
+![No spot machines please.](screenshots/16-nospotmachinesplease.png)
+
+Seguí las instrucciones anteriores mías – menos mal lo fui documentando – y pude
+crear otro clúster que, ojalá, no se caiga con el comando más simple.

@@ -45,7 +45,13 @@ TBLPROPERTIES ("skip.header.line.count"="1");
 
 ### Confirmación visual
 
+Al terminar la consulta de Hive en Hue:
+
 ![Creación de table hdi](screenshots/02-creacion-tabla-hdi.png)
+
+Desde el _Table Browser_ de Hue:
+
+![hdi en Table Browser de Hue.](screenshots/03-hdi-en-table-browser.png)
 
 ### Output
 

@@ -64,7 +64,7 @@ Acá están los grupos de seguridad de EC2 administrados por EMR:
 
 ### Acciones de arranque (y logs)
 
-Cargué el archivo [`install-python-libs.sh`](install-python-libs.sh) al bucket
+Cargué el archivo [`install-python-libs.sh`](emr-cluster-configs/install-python-libs.sh) al bucket
 S3 y lo configuré como acción de arranque. El enlace en Markdown debería llevar
 a los contenidos de ese archivo en el repositorio.
 
@@ -94,7 +94,7 @@ dan en esa página:
 ]
 ```
 
-Yo lo adapté en [`emr-cluster-config.json`](emr-cluster-config.json) con el
+Yo lo adapté en [`emr-cluster-config.json`](emr-cluster-configs/emr-cluster-config.json) con el
 nombre de mi bucket y lo cargué a S3:
 
 ![Configuración del software.](screenshots/07-configuracion-software.png)

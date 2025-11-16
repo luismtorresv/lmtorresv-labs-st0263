@@ -64,3 +64,28 @@ Log en AWS CloudWatch:
 [0f2f2a30-c09d-4485-ba3c-d37e8fe0148b] INFO : ADD: 2
 [0f2f2a30-c09d-4485-ba3c-d37e8fe0148b] BENCHMARK : Crawler has finished running and is in state READY
 ```
+
+### Revisando el resultado del crawler
+
+Comprobé que se crearon las dos (2) tablas:
+
+![Tablas en Glue.](screenshots/07-tablas-glue.png)
+
+### Tabla `hdi`
+
+![Tabla de hdi.](screenshots/08-tabla-hdi.png)
+
+Incluso generé estadísticas de las columnas como forma rápida de comprobar
+que están los datos ahí:
+
+![Estadísticas de hdi.](screenshots/09-tabla-hdi-estadisticas.png)
+
+Creo que es una función nueva en Glue. No sé cómo está implementada.
+Solo sé que le di clic a un botón y lo generó. Lo que quiero decir es que, en
+esta parte, no se usa Athena directamente.
+
+### Tabla `export`
+
+![Tabla de export.](screenshots/10-tabla-export.png)
+
+(A este no le generé estadísticas de columnas.)

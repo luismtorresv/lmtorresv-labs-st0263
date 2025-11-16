@@ -120,3 +120,34 @@ Resolving deltas: 100% (171/171), done.
 > Creé un fork del repositorio. Por eso usa mi cuenta.
 >
 > Además, moví `datasets` a la raíz (junto con otros cambios).
+
+## Copiar `gutenberg-small` al HDFS
+
+Copié los archivos usando `put`:
+
+```
+[hadoop@ip-172-31-79-60 ~]$ hdfs dfs -put ~/st0263/datasets/gutenberg-small/*.txt /user/hadoop/datasets/gutenberg-small
+```
+
+Verifiqué que existan en HDFS con `ls`:
+
+```
+[hadoop@ip-172-31-79-60 ~]$ hdfs dfs -ls /user/hadoop/datasets/gutenberg-small
+Found 16 items
+-rw-r--r--   1 hadoop hdfsadmingroup       5717 2025-11-16 16:11 /user/hadoop/datasets/gutenberg-small/AbrahamLincoln___LincolnLetters.txt
+-rw-r--r--   1 hadoop hdfsadmingroup      21208 2025-11-16 16:11 /user/hadoop/datasets/gutenberg-small/AbrahamLincoln___LincolnsFirstInauguralAddress.txt
+-rw-r--r--   1 hadoop hdfsadmingroup       1618 2025-11-16 16:11 /user/hadoop/datasets/gutenberg-small/AbrahamLincoln___LincolnsGettysburgAddressGivenNovember-19-1863.txt
+-rw-r--r--   1 hadoop hdfsadmingroup     257455 2025-11-16 16:11 /user/hadoop/datasets/gutenberg-small/AbrahamLincoln___LincolnsInauguralsAddressesandLettersSelections.txt
+-rw-r--r--   1 hadoop hdfsadmingroup       4020 2025-11-16 16:11 /user/hadoop/datasets/gutenberg-small/AbrahamLincoln___LincolnsSecondInauguralAddress.txt
+-rw-r--r--   1 hadoop hdfsadmingroup     507462 2025-11-16 16:11 /user/hadoop/datasets/gutenberg-small/AbrahamLincoln___SpeechesandLettersofAbrahamLincoln1832-1865.txt
+-rw-r--r--   1 hadoop hdfsadmingroup     165030 2025-11-16 16:11 /user/hadoop/datasets/gutenberg-small/AbrahamLincoln___StateoftheUnionAddresses.txt
+-rw-r--r--   1 hadoop hdfsadmingroup       3848 2025-11-16 16:11 /user/hadoop/datasets/gutenberg-small/AbrahamLincoln___TheEmancipationProclamation.txt
+-rw-r--r--   1 hadoop hdfsadmingroup      44772 2025-11-16 16:11 /user/hadoop/datasets/gutenberg-small/AbrahamLincoln___TheLifeandPublicServiceofGeneralZacharyTaylorAnAddress.txt
+-rw-r--r--   1 hadoop hdfsadmingroup     451186 2025-11-16 16:11 /user/hadoop/datasets/gutenberg-small/AbrahamLincoln___TheWritingsofAbrahamLincolnVolume1.txt
+-rw-r--r--   1 hadoop hdfsadmingroup     496055 2025-11-16 16:11 /user/hadoop/datasets/gutenberg-small/AbrahamLincoln___TheWritingsofAbrahamLincolnVolume2.txt
+-rw-r--r--   1 hadoop hdfsadmingroup     250854 2025-11-16 16:11 /user/hadoop/datasets/gutenberg-small/AbrahamLincoln___TheWritingsofAbrahamLincolnVolume3.txt
+-rw-r--r--   1 hadoop hdfsadmingroup     206449 2025-11-16 16:11 /user/hadoop/datasets/gutenberg-small/AbrahamLincoln___TheWritingsofAbrahamLincolnVolume4.txt
+-rw-r--r--   1 hadoop hdfsadmingroup     677845 2025-11-16 16:11 /user/hadoop/datasets/gutenberg-small/AbrahamLincoln___TheWritingsofAbrahamLincolnVolume5.txt
+-rw-r--r--   1 hadoop hdfsadmingroup     584975 2025-11-16 16:11 /user/hadoop/datasets/gutenberg-small/AbrahamLincoln___TheWritingsofAbrahamLincolnVolume6.txt
+-rw-r--r--   1 hadoop hdfsadmingroup     466500 2025-11-16 16:11 /user/hadoop/datasets/gutenberg-small/AbrahamLincoln___TheWritingsofAbrahamLincolnVolume7.txt
+```

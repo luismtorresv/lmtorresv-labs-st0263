@@ -49,3 +49,55 @@ EEEEEEEEEEEEEEEEEEEE MMMMMMM             MMMMMMM RRRRRRR      RRRRRR
 
 [hadoop@ip-172-31-74-184 ~]$
 ```
+
+## Comandos para listar archivos
+
+### Listar la raíz
+
+```
+[hadoop@ip-172-31-74-184 st0263]$ hdfs dfs -ls /
+Found 4 items
+drwxr-xr-x   - hdfs hdfsadmingroup          0 2025-11-16 01:01 /apps
+drwxrwxrwt   - hdfs hdfsadmingroup          0 2025-11-16 01:02 /tmp
+drwxr-xr-x   - hdfs hdfsadmingroup          0 2025-11-16 01:01 /user
+drwxr-xr-x   - hdfs hdfsadmingroup          0 2025-11-16 01:01 /var
+```
+
+### Listar los directorios de usuarios
+
+```
+[hadoop@ip-172-31-74-184 st0263]$ hdfs dfs -ls /user
+Found 9 items
+drwxrwxrwx   - hadoop   hdfsadmingroup          0 2025-11-16 02:56 /user/hadoop
+drwxr-xr-x   - mapred   mapred                  0 2025-11-16 01:01 /user/history
+drwxrwxrwx   - hdfs     hdfsadmingroup          0 2025-11-16 01:01 /user/hive
+drwxrwxrwx   - hue      hue                     0 2025-11-16 01:01 /user/hue
+drwxrwxrwx   - livy     livy                    0 2025-11-16 01:17 /user/livy
+drwxrwxrwx   - oozie    oozie                   0 2025-11-16 01:01 /user/oozie
+drwxrwxrwx   - root     hdfsadmingroup          0 2025-11-16 01:01 /user/root
+drwxrwxrwx   - spark    spark                   0 2025-11-16 01:01 /user/spark
+drwxrwxrwx   - zeppelin hdfsadmingroup          0 2025-11-16 01:01 /user/zeppelin
+```
+
+### Listar el directorio del usuario `hadoop`
+
+```
+[hadoop@ip-172-31-74-184 st0263]$ hdfs dfs -ls /user/hadoop
+Found 1 items
+drwxr-xr-x   - hadoop hdfsadmingroup          0 2025-11-16 02:56 /user/hadoop/datasets
+```
+
+### Listar el directorio no existente (todavía) de `datasets`
+
+```
+[hadoop@ip-172-31-74-184 st0263]$ hdfs dfs -ls /user/hadoop/datasets
+ls: `/user/hadoop/datasets': No such file or directory
+[hadoop@ip-172-31-74-184 st0263]$
+```
+
+## Crear directorio de datasets
+
+```
+[hadoop@ip-172-31-74-184 st0263]$ hdfs dfs -mkdir /user/hadoop/datasets
+[hadoop@ip-172-31-74-184 st0263]$
+```

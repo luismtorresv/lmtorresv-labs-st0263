@@ -360,3 +360,48 @@ copyToLocal: `/home/hadoop/mis_datasets/AbrahamLincoln___TheWritingsofAbrahamLin
 copyToLocal: `/home/hadoop/mis_datasets/AbrahamLincoln___TheWritingsofAbrahamLincolnVolume6.txt': File exists
 copyToLocal: `/home/hadoop/mis_datasets/AbrahamLincoln___TheWritingsofAbrahamLincolnVolume7.txt': File exists
 ```
+
+## Probando otros comandos de HDFS
+
+### `du`
+
+```
+[hadoop@ip-172-31-79-60 ~]$ hdfs dfs -du -h -v /user/hadoop/datasets | head -n 7
+SIZE     DISK_SPACE_CONSUMED_WITH_ALL_REPLICAS  FULL_PATH_NAME
+761.8 K  761.8 K                                /user/hadoop/datasets/airlines.csv
+46       46                                     /user/hadoop/datasets/all-news
+80       80                                     /user/hadoop/datasets/clientes.csv
+16.6 M   16.6 M                                 /user/hadoop/datasets/covid19
+33.2 M   33.2 M                                 /user/hadoop/datasets/flights
+3.3 M    3.3 M                                  /user/hadoop/datasets/gutenberg
+```
+
+### `cat`
+
+```
+[hadoop@ip-172-31-79-60 ~]$ hdfs dfs -cat /user/hadoop/datasets/sample_data.csv | head -n 5
+ratings,age,experience,family,mobile
+3,32,9,3,Vivo
+3,27,13,3,Apple
+4,22,2.5,0,Samsung
+4,37,16.5,4,Apple
+```
+
+### `chmod`
+
+```
+[hadoop@ip-172-31-79-60 ~]$ hdfs dfs -chmod 400 /user/hadoop/datasets/clientes.csv
+[hadoop@ip-172-31-79-60 ~]$ hdfs dfs -ls -h /user/hadoop/datasets | head -n 4
+Found 12 items
+-rw-r--r--   1 hadoop hdfsadmingroup    761.8 K 2025-11-16 16:22 /user/hadoop/datasets/airlines.csv
+drwxr-xr-x   - hadoop hdfsadmingroup          0 2025-11-16 16:22 /user/hadoop/datasets/all-news
+-r--------   1 hadoop hdfsadmingroup         80 2025-11-16 16:22 /user/hadoop/datasets/clientes.csv
+```
+
+### `chown`
+
+```
+[hadoop@ip-172-31-79-60 ~]$ hdfs dfs -chown nobody /user/hadoop/datasets/clientes.csv
+[hadoop@ip-172-31-79-60 ~]$ hdfs dfs -ls -h /user/hadoop/datasets | grep clientes.csv
+-r--------   1 nobody hdfsadmingroup         80 2025-11-16 16:22 /user/hadoop/datasets/clientes.csv
+```

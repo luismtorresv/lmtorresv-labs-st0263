@@ -39,3 +39,27 @@
 ### Verificación
 
 ![Verificación](screenshots/04-drive-montado.png)
+
+## Problemas que se presentaron
+
+### `spark_colab_ejercicios`
+
+No fue posible correr el PageRank con el paquete `graphframes`.
+
+Le pregunté a ChatGPT, porque no tengo ni idea de cómo funciona el sistema de
+paquetes en Colab o en JupyterHub, y me dijo que:
+
+> ChatGPT said:GraphFrames does not load in Colab’s Spark 4.x runtime because
+> GraphFrames’ latest release (0.8.3) is built for Spark 3.5, while Google Colab
+> now bundles Spark 4.0.1.
+>
+> The JVM classloader rejects the JAR, leaving
+> `org.graphframes.GraphFramePythonAPI` unavailable, which produces the exact
+> error you see.
+>
+> There is no compatible GraphFrames build for Spark 4.x.
+>
+> To use GraphFrames in Colab, you must run Spark 3.5.x, not Spark 4.x.
+
+No sé qué tanta raźón tenga, pero intenté varias cosas y ninguna permitió
+correrlo con éxito.

@@ -372,3 +372,78 @@ INFO  : Status: Running (Executing on YARN cluster with App id application_17633
 INFO  : Map 1: -/-	Reducer 2: 0/1
 </pre>
 </details>
+
+### Creando la otra tabla (`expo`)
+
+Corrí estos comandos:
+
+```sql
+use lmtorresv;
+
+
+CREATE
+EXTERNAL
+TABLE expo (
+country STRING,
+expct FLOAT
+)
+
+ROW FORMAT DELIMITED FIELDS
+TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION 's3://lmtorresv-datalake/datasets/onu/export/'
+TBLPROPERTIES ("skip.header.line.count"="1");
+```
+
+![Creación de tabla expo.](screenshots/14-creacion-expo.png)
+
+Comprobé que se creó correctamente la tabla `expo`:
+
+![Comprobación de expo en Hue.](screenshots/15-comprobacion-expo.png)
+
+<details>
+<summary>
+Output de ejecución completo
+</summary>
+<pre>
+INFO  : Compiling command(queryId=hive_20251117012047_0d55a045-3310-4852-8244-6f06df4b3d14):
+
+
+CREATE
+EXTERNAL
+TABLE expo (
+country STRING,
+expct FLOAT
+)
+
+ROW FORMAT DELIMITED FIELDS
+TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION 's3://lmtorresv-datalake/datasets/onu/export/'
+TBLPROPERTIES ("skip.header.line.count"="1")
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20251117012047_0d55a045-3310-4852-8244-6f06df4b3d14); Time taken: 0.016 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=hive_20251117012047_0d55a045-3310-4852-8244-6f06df4b3d14):
+
+
+CREATE
+EXTERNAL
+TABLE expo (
+country STRING,
+expct FLOAT
+)
+
+ROW FORMAT DELIMITED FIELDS
+TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION 's3://lmtorresv-datalake/datasets/onu/export/'
+TBLPROPERTIES ("skip.header.line.count"="1")
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20251117012047_0d55a045-3310-4852-8244-6f06df4b3d14); Time taken: 0.223 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+</pre>
+</details>

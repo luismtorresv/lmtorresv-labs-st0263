@@ -193,3 +193,22 @@ upload: ../../mnt/c/tmp/Casos_positivos_de_COVID-19_en_Colombia._20251117.csv to
 ```
 
 ![Datos de COVID-19 en S3.](screenshots/05-ins-s3.png)
+
+### Análisis exploratorio de datos
+
+1. Cargué los datos desde S3.
+2. Normalicé datos en algunas columnas.
+3. Apliqué filtros para analizar los datos.
+4. Realicé agrupaciones y consultas categóricas.
+5. Guardé los resultados como archivos csv en el bucket.
+
+### Evidencias
+
+Una vista previa del cuaderno en JupyterHub:
+
+![Vista previa.](screenshots/06-vista-previa-dataframes.png)
+
+> [!NOTE]
+>
+> El cuaderno de esta sección se encuentra en
+> [`notebooks/procesamiento-basico-dataframes.ipynb`](notebooks/procesamiento-basico-dataframes.ipynb).

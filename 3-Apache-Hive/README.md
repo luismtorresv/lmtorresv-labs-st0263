@@ -249,3 +249,116 @@ INFO  : Completed executing command(queryId=hive_20251116224306_d266db8e-30de-45
 INFO  : OK
 INFO  : Concurrency mode is disabled, not creating a lock manager
 ```
+
+### Países con mayor número de años promedio de escolaridad (`mysch`)
+
+```sql
+-- mysch → mean years of schooling
+FROM hdi
+SELECT country, mysch
+ORDER BY mysch DESC
+LIMIT 10;
+```
+
+![Consulta dee mysch.](screenshots/12-mysch.png)
+
+<details>
+<summary>
+Output de ejecución completo
+</summary>
+<pre>
+INFO  : Compiling command(queryId=hive_20251117010835_01a2d93b-258b-484f-9d86-c220b7aa53e6): -- mysch → mean years of schooling
+FROM hdi
+SELECT country, mysch
+ORDER BY mysch DESC
+LIMIT 10
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:country, type:string, comment:null), FieldSchema(name:mysch, type:int, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20251117010835_01a2d93b-258b-484f-9d86-c220b7aa53e6); Time taken: 0.065 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=hive_20251117010835_01a2d93b-258b-484f-9d86-c220b7aa53e6): -- mysch → mean years of schooling
+FROM hdi
+SELECT country, mysch
+ORDER BY mysch DESC
+LIMIT 10
+INFO  : Query ID = hive_20251117010835_01a2d93b-258b-484f-9d86-c220b7aa53e6
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: hive_20251117010835_01a2d93b-258b-484f-9d86-c220b7aa53e6
+INFO  : Tez session hasn't been created yet. Opening session
+INFO  : Dag name: -- mysch → mean years of schooling
+FROM...10 (Stage-1)
+INFO  : Status: Running (Executing on YARN cluster with App id application_1763307644791_0010)
+
+INFO  : Map 1: -/-	Reducer 2: 0/1
+INFO  : Map 1: 0/1	Reducer 2: 0/1
+INFO  : Map 1: 0(+1)/1	Reducer 2: 0/1
+INFO  : Map 1: 1/1	Reducer 2: 0(+1)/1
+INFO  : Map 1: 1/1	Reducer 2: 1/1
+INFO  : Completed executing command(queryId=hive_20251117010835_01a2d93b-258b-484f-9d86-c220b7aa53e6); Time taken: 14.658 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+</pre>
+</details>
+
+### Número de años esperados de escolaridad (`eysch`) menos el número de años promedio de escolaridad (`mysch`)
+
+```sql
+SELECT
+    country,
+    mysch,
+    eysch,
+    (eysch - mysch) AS schooling_gap
+FROM
+    hdi
+ORDER BY
+    schooling_gap DESC;
+```
+
+![Consulta de schooling_gap.](screenshots/13-schooling_gap.png)
+
+<details>
+<summary>
+Output de ejecución completo
+</summary>
+<pre>
+INFO  : Compiling command(queryId=hive_20251117010516_5cf1f0c6-df70-4e8e-8896-79c4e1c48a77): SELECT
+    country,
+    mysch,
+    eysch,
+    (eysch - mysch) AS schooling_gap
+FROM
+    hdi
+ORDER BY
+    schooling_gap DESC
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:country, type:string, comment:null), FieldSchema(name:mysch, type:int, comment:null), FieldSchema(name:eysch, type:int, comment:null), FieldSchema(name:schooling_gap, type:int, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20251117010516_5cf1f0c6-df70-4e8e-8896-79c4e1c48a77); Time taken: 0.078 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=hive_20251117010516_5cf1f0c6-df70-4e8e-8896-79c4e1c48a77): SELECT
+    country,
+    mysch,
+    eysch,
+    (eysch - mysch) AS schooling_gap
+FROM
+    hdi
+ORDER BY
+    schooling_gap DESC
+INFO  : Query ID = hive_20251117010516_5cf1f0c6-df70-4e8e-8896-79c4e1c48a77
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: hive_20251117010516_5cf1f0c6-df70-4e8e-8896-79c4e1c48a77
+INFO  : Session is already open
+INFO  : Dag name: SELECT
+    country,
+    mysch,
+   ...DESC (Stage-1)
+INFO  : Status: Running (Executing on YARN cluster with App id application_1763307644791_0009)
+
+INFO  : Map 1: -/-	Reducer 2: 0/1
+</pre>
+</details>

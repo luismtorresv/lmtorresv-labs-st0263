@@ -4,7 +4,11 @@
 
 ![Creación de base de datos.](screenshots/01-creacion-db.png)
 
-```
+<details>
+<summary>
+Output de ejecución completo
+</summary>
+<pre>
 INFO  : Compiling command(queryId=hive_20251116212222_0a227532-d9e9-45b0-8d25-caa24192bf5b):
 CREATE DATABASE lmtorresv
 INFO  : Concurrency mode is disabled, not creating a lock manager
@@ -18,7 +22,8 @@ INFO  : Starting task [Stage-0:DDL] in serial mode
 INFO  : Completed executing command(queryId=hive_20251116212222_0a227532-d9e9-45b0-8d25-caa24192bf5b); Time taken: 0.129 seconds
 INFO  : OK
 INFO  : Concurrency mode is disabled, not creating a lock manager
-```
+</pre>
+</details>
 
 ## Creación de la tabla manejada `hdi`
 
@@ -53,9 +58,11 @@ Desde el _Table Browser_ de Hue:
 
 ![hdi en Table Browser de Hue.](screenshots/03-hdi-en-table-browser.png)
 
-### Output
-
-```
+<details>
+<summary>
+Output de ejecución completo
+</summary>
+<pre>
 INFO  : Compiling command(queryId=hive_20251116214257_af2173c3-3c22-46ec-9652-c1623888c8c4):
 
 CREATE TABLE HDI (
@@ -97,7 +104,8 @@ INFO  : Starting task [Stage-0:DDL] in serial mode
 INFO  : Completed executing command(queryId=hive_20251116214257_af2173c3-3c22-46ec-9652-c1623888c8c4); Time taken: 0.029 seconds
 INFO  : OK
 INFO  : Concurrency mode is disabled, not creating a lock manager
-```
+</pre>
+</details>
 
 ## Cargar datos a la tabla `hdi`
 
@@ -222,10 +230,11 @@ WHERE
 
 ![Consulta simple.](screenshots/07-consulta-simple.png)
 
-
-#### Output
-
-```
+<details>
+<summary>
+Output de ejecución completo
+</summary>
+<pre>
 INFO  : Compiling command(queryId=hive_20251116224306_d266db8e-30de-45ba-8c51-14e9bba53475): SELECT
     country,
     gni
@@ -248,7 +257,8 @@ WHERE
 INFO  : Completed executing command(queryId=hive_20251116224306_d266db8e-30de-45ba-8c51-14e9bba53475); Time taken: 0.0 seconds
 INFO  : OK
 INFO  : Concurrency mode is disabled, not creating a lock manager
-```
+</pre>
+</details>
 
 ### Países con mayor número de años promedio de escolaridad (`mysch`)
 

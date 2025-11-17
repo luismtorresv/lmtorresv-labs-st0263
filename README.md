@@ -58,9 +58,15 @@ tipo de dato. Una vez hecho esto, pasamos a usar el motor de consultas SQL **AWS
 Athena** para realizar diferentes consultas sobre los datos, como si fuera una
 base de datos relacional.
 
+### Consultas SQL
+
+En la cuarta parte, usamos **Apache Hive** desde **Hue** para crear tablas con
+datos de diferentes fuentes: S3, HDFS, archivos locales. Luego corremos
+consultas SQL sobre estos datos para verificar que quedaron bien montados.
+
 ### Cuadernos interactivos
 
-En la cuarta parte, entramos a **JupyterHub** y a **Google Colab** para realizar
+En la quinta parte, entramos a **JupyterHub** y a **Google Colab** para realizar
 consultas usando el clúster EMR ya creado con **Apache Spark**. Realizaremos
 procesamiento básico de datos del COVID-19 en Colombia en ambos entornos. Al
 final, quedaremos con datos en tanto S3 como en **Google Drive** (por lo de

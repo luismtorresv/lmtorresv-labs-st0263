@@ -519,3 +519,54 @@ INFO  : OK
 INFO  : Concurrency mode is disabled, not creating a lock manager
 </pre>
 </details>
+
+## Conteo de palabras ("word count")
+
+### Creación de la tabla `docs`
+
+![Creación de la tabla docs.](screenshots/17-creacion-docs.png)
+
+Comprobé que se creó la tabla `docs`:
+
+![Detalles de docs.](screenshots/18-detalles-docs.png)
+
+Y acá está una muestra de `docs`:
+
+![Sample de docs.](screenshots/19-sample-docs.png)
+
+<details>
+<summary>
+Output de ejecución completo
+</summary>
+<pre>
+INFO  : Compiling command(queryId=hive_20251117013754_66e2fd4e-7a96-470c-96f6-1707d0516df3):
+
+
+CREATE
+EXTERNAL
+TABLE docs (
+    line STRING
+)
+STORED AS TEXTFILE
+LOCATION 's3://lmtorresv-datalake/datasets/gutenberg-small/'
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20251117013754_66e2fd4e-7a96-470c-96f6-1707d0516df3); Time taken: 0.004 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=hive_20251117013754_66e2fd4e-7a96-470c-96f6-1707d0516df3):
+
+
+CREATE
+EXTERNAL
+TABLE docs (
+    line STRING
+)
+STORED AS TEXTFILE
+LOCATION 's3://lmtorresv-datalake/datasets/gutenberg-small/'
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20251117013754_66e2fd4e-7a96-470c-96f6-1707d0516df3); Time taken: 0.198 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+</pre>
+</details>

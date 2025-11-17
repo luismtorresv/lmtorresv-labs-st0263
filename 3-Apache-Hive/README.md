@@ -130,12 +130,77 @@ Y comprobé que haya interpretado bien el header con una muestra:
 
 ![Muestra de datos en Table Browser.](screenshots/06-sample-hdi.png)
 
-> [!NOTE]
->
-> Voy a asumir que _no es necesario_ crear la tabla con los otros
-> métodos (como tabla externa con HDFS y S3). Eso está muy
-> bien, pero no creo que tenga sentido tumbar esta tabla
-> solo para usar esos otros métodos
+## Creando tablas externas
+
+### Usando HDFS
+
+Corrí estos comandos con Hive:
+
+```sql
+use lmtorresv;
+
+
+CREATE
+EXTERNAL
+TABLE hdi_hdfs (
+    id INT,
+    country STRING,
+    hdi FLOAT,
+    lifeex INT,
+    mysch INT,
+    eysch INT,
+    gni INT
+)
+
+ROW FORMAT DELIMITED FIELDS
+TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION '/user/hadoop/datasets/onu/hdi/'
+TBLPROPERTIES ("skip.header.line.count"="1");
+```
+
+#### Verificación
+
+![Creación exitosa de hdi_hdfs.](screenshots/08-hdi_hdfs.png)
+
+En _Table Browser_ de Hue:
+
+![Detalles de hdi_hdfs.](screenshots/09-hdi_hdfs-details.png)
+
+### Usando S3
+
+Corrí estos comandos con Hive:
+
+```sql
+use lmtorresv;
+
+
+CREATE
+EXTERNAL
+TABLE hdi_s3 (
+    id INT,
+    country STRING,
+    hdi FLOAT,
+    lifeex INT,
+    mysch INT,
+    eysch INT,
+    gni INT
+)
+
+ROW FORMAT DELIMITED FIELDS
+TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION 's3://lmtorresv-datalake/datasets/onu/hdi/'
+TBLPROPERTIES ("skip.header.line.count"="1");
+```
+
+#### Verificación
+
+![Creación exitosa de hdi_s3.](screenshots/10-hdi_s3.png)
+
+En _Table Browser_ de Hue:
+
+![Detalles de hdi_s3.](screenshots/11-hdi_s3-details.png)
 
 ## Realizar consultas y cálculos sobre la tabla `hdi`
 

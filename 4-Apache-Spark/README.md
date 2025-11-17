@@ -7,12 +7,13 @@
 | Data_processing_using_PySpark | EMR | AWS S3 | [emr-s3.ipynb][1] |
 | Data_processing_using_PySpark | Colab | Google Drive | [colab-gdrive.ipynb][2] |
 | Data_processing_using_PySpark | Colab | AWS S3 | [colab-s3.ipynb][3] |
+| spark_colab_ejercicios | EMR | AWS S3 | [emr-s3.ipynb][4] |
 | spark_colab_ejercicios | Colab | Google Drive| [colab-gdrive.ipynb][5] |
 
 [1]: <notebooks/Data_processing_using_PySpark/emr-s3.ipynb>
 [2]: <notebooks/Data_processing_using_PySpark/colab-gdrive.ipynb>
 [3]: <notebooks/Data_processing_using_PySpark/colab-s3.ipynb>
-
+[4]: <notebooks/spark_colab_ejercicios/emr-s3.ipynb>
 [5]: <notebooks/spark_colab_ejercicios/colab-gdrive.ipynb>
 
 > [!TIP]

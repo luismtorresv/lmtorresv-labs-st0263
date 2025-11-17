@@ -173,3 +173,23 @@ wc.coalesce(1).saveAsTextFile("hdfs:///tmp/wcount1")
 >
 > El resultado completo, con las 38 863 filas, está en
 > [`output/part-00000`](output/part-00000).
+
+## Procesamiento de datos de COVID-19
+
+### Carga de datos
+
+Me descargué el archivo en CSV de 1.3 GB con las 6.39 millones de líneas de
+
+> Instituto Nacional de Salud. 2024-08-14.
+> "Casos positivos de COVID-19 en Colombia".
+> URL:
+> <https://www.datos.gov.co/Salud-y-Protecci-n-Social/Casos-positivos-de-COVID-19-en-Colombia-/gt2j-8ykr/>
+
+Subí el archivo a mi bucket S3:
+
+```shell
+$ aws s3 cp /mnt/c/tmp/Casos_positivos_de_COVID-19_en_Colombia._20251117.csv s3://lmtorresv-datalake/covid/ins-casos-completos.csv
+upload: ../../mnt/c/tmp/Casos_positivos_de_COVID-19_en_Colombia._20251117.csv to s3://lmtorresv-datalake/covid/ins-casos-completos.csv
+```
+
+![Datos de COVID-19 en S3.](screenshots/05-ins-s3.png)

@@ -1,4 +1,6 @@
-# Metadata
+# Laboratorios de Big Data
+
+## Metadata
 
 <table>
     <tbody>
@@ -23,7 +25,7 @@
     </tbody>
 </table>
 
-# Laboratorios de Big Data
+
 
 ## Breve descripción de la actividad
 
@@ -63,33 +65,3 @@ consultas usando el clúster EMR ya creado con **Apache Spark**. Realizaremos
 procesamiento básico de datos del COVID-19 en Colombia en ambos entornos. Al
 final, quedaremos con datos en tanto S3 como en **Google Drive** (por lo de
 Colab).
-
-## Aspectos cumplidos y/o desarrollados de la actividad propuesta por el profesor
-
-<!-- Requerimientos funcionales y no funcionales -->
-
-> [!NOTE]
->
-> Pendiente por completar.
-
-### Aspectos NO cumplidos y/o desarrollados de la actividad propuesta por el profesor
-
-<!-- Requerimientos funcionales y no funcionales -->
-
-> [!NOTE]
->
-> Pendiente por completar.
-
-## Referencias
-
-<!--
-Debemos siempre reconocer los créditos de partes del código que reutilizaremos,
-así como referencias a youtube, o referencias bibliográficas utilizadas para
-desarrollar el proyecto o la actividad.
-
-* [Nombre de la página](sitio-1-url)
-* [Nombre de la página](sitio-2-url)
-* …
-*
-* [Nombre de la página](sitio-N-url)
--->

@@ -5,4 +5,5 @@ sudo python3 -m pip install \
     nltk \
     pandas \
     scikit-learn \
-    scipy
+    scipy \
+    graphframes

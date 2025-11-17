@@ -570,3 +570,33 @@ INFO  : OK
 INFO  : Concurrency mode is disabled, not creating a lock manager
 </pre>
 </details>
+
+### Consulta de palabras ordenadas alfabéticamente
+
+```sql
+SELECT word, count(1)
+AS count
+FROM (
+    SELECT explode(split(line,' '))
+    AS word FROM docs
+    ) w
+GROUP BY word
+ORDER BY word DESC LIMIT 10;
+```
+
+![Consulta ordenada por orden alfabético.](screenshots/19-consulta-alfabeticamente.png)
+
+### Consulta de palabras ordenadas por frecuencia
+
+```sql
+SELECT word, count(1)
+AS count
+FROM (
+    SELECT explode(split(line,' '))
+    AS word FROM docs
+    ) w
+GROUP BY word
+ORDER BY count DESC LIMIT 10;
+```
+
+![Consulta ordenada por frecuencia.](screenshots/20-consulta-frecuencia.png)

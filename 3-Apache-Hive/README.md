@@ -600,3 +600,40 @@ ORDER BY count DESC LIMIT 10;
 ```
 
 ![Consulta ordenada por frecuencia.](screenshots/20-consulta-frecuencia.png)
+
+## Reto adicional
+
+> ¿Cómo llenar una tabla con los resultados de un query? Por ejemplo, ¿cómo
+> almacenar en una tabla el diccionario de frecuencia de palabras en el word
+> count?
+
+Inserté los resultados en una tabla:
+
+```sql
+CREATE TABLE wordcount
+STORED AS PARQUET
+AS
+SELECT word, COUNT(1) AS freq
+FROM (
+    SELECT explode(split(line,' ')) AS word
+    FROM docs
+) w
+GROUP BY word;
+```
+
+![Parte 1 de la inserción.](screenshots/21-reto-parte_1.png)
+
+Mostré las 10 entradas que tienen la mayor frecuencia:
+
+```sql
+SELECT
+    *
+FROM
+    wordcount
+ORDER BY
+    freq desc
+LIMIT
+    10;
+```
+
+![Parte 2 de la verificación.](screenshots/22-reto-parte_2.png)

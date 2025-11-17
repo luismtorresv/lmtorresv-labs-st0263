@@ -11,10 +11,45 @@ logs en un bucket de AWS S3, pues primero fui a crear ese bucket:
 
 ![Creación exitosa del bucket en AWS S3.](screenshots/01-creacion-bucket-s3.png)
 
+### Acceso público
+
 Además activé el acceso público al bucket S3 (o, mejor dicho, desactivé el
 bloqueo público que impone por defecto AWS):
 
 ![Activación del acceso público al bucket S3.](screenshots/02-acceso-publico-bucket-s3.png)
+
+### Política de solo lectura
+
+Intentando acceder a los contenidos del bucket sin mis credenciales, noté que
+fallaba a pesar de haber permitido el acceso público. En lo que pude encontrar
+en la WWW, parece que es necesario agregar una _bucket policy_ para que todos
+los objetos en el bucket tengan acceso público de _solo lectura_:
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AddPerm",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::lmtorresv-datalake/*"
+        }
+    ]
+}
+```
+
+![Política del bucket.](screenshots/18-s3-bucket-policy.png)
+
+> [!NOTE]
+>
+> Se puede consultar más sobre esta política en el _Knowledge Center_ de AWS
+> en ["How do I grant public read access to some objects in my Amazon S3 bucket"](https://repost.aws/knowledge-center/read-access-objects-s3-bucket),
+> específicamente, la sección titulada
+> "Use a bucket policy that grants public read access to a specific prefix".
+
+### Verificación
 
 Ya tengo unos cuantos archivos creados — archivos que se necesitan luego al
 crear el clúster EMR — que puedo ver listados si invoco AWS CLI sobre el

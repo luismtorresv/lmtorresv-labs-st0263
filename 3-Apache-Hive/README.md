@@ -447,3 +447,75 @@ INFO  : OK
 INFO  : Concurrency mode is disabled, not creating a lock manager
 </pre>
 </details>
+
+
+### Ejecutando el `JOIN` de ambas tablas (`hdi` y `expo`)
+
+```sql
+SELECT
+    hdi.country,
+    hdi.gni,
+    expo.expct
+FROM
+    HDI hdi
+    JOIN EXPO expo ON (hdi.country = expo.country)
+WHERE
+    hdi.gni > 2000;
+```
+
+![JOIN de hdi y expo.](screenshots/16-join-expo-hdi.png)
+
+<details>
+<summary>
+Output de ejecución completo
+</summary>
+<pre>
+application_1763307644791_0011
+INFO  : Compiling command(queryId=hive_20251117012415_467b33e1-86ba-4da1-a911-f36752170af3): SELECT
+    hdi.country,
+    hdi.gni,
+    expo.expct
+FROM
+    HDI hdi
+    JOIN EXPO expo ON (hdi.country = expo.country)
+WHERE
+    hdi.gni > 2000
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:hdi.country, type:string, comment:null), FieldSchema(name:hdi.gni, type:int, comment:null), FieldSchema(name:expo.expct, type:float, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20251117012415_467b33e1-86ba-4da1-a911-f36752170af3); Time taken: 0.207 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=hive_20251117012415_467b33e1-86ba-4da1-a911-f36752170af3): SELECT
+    hdi.country,
+    hdi.gni,
+    expo.expct
+FROM
+    HDI hdi
+    JOIN EXPO expo ON (hdi.country = expo.country)
+WHERE
+    hdi.gni > 2000
+INFO  : Query ID = hive_20251117012415_467b33e1-86ba-4da1-a911-f36752170af3
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: hive_20251117012415_467b33e1-86ba-4da1-a911-f36752170af3
+INFO  : Tez session hasn't been created yet. Opening session
+INFO  : Dag name: SELECT
+    hdi.country,
+    hdi.gni...2000 (Stage-1)
+INFO  : Setting tez.task.scale.memory.reserve-fraction to 0.30000001192092896
+INFO  : Status: Running (Executing on YARN cluster with App id application_1763307644791_0011)
+
+INFO  : Map 1: -/-	Map 2: -/-
+INFO  : Map 1: 0/1	Map 2: -/-
+INFO  : Map 1: 0/1	Map 2: 0/1
+INFO  : Map 1: 0(+1)/1	Map 2: 0/1
+INFO  : Map 1: 0(+1)/1	Map 2: 0(+1)/1
+INFO  : Map 1: 1/1	Map 2: 0(+1)/1
+INFO  : Map 1: 1/1	Map 2: 0(+1)/1
+INFO  : Map 1: 1/1	Map 2: 1/1
+INFO  : Completed executing command(queryId=hive_20251117012415_467b33e1-86ba-4da1-a911-f36752170af3); Time taken: 17.034 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+</pre>
+</details>

@@ -212,3 +212,28 @@ Una vista previa del cuaderno en JupyterHub:
 >
 > El cuaderno de esta sección se encuentra en
 > [`notebooks/procesamiento-basico-dataframes.ipynb`](notebooks/procesamiento-basico-dataframes.ipynb).
+
+## Preguntas de negocio con DataFrames y SparkSQL
+
+### Preguntas que contesta
+
+1. Los 10 departamentos con más casos de COVID-19 en Colombia, ordenados de
+  mayor a menor.
+2. Las 10 ciudades con más casos de COVID-19 en Colombia, ordenadas de mayor a
+  menor.
+3. Los 10 días con más casos de COVID-19 en Colombia, ordenados de mayor a
+   menor.
+4. Distribución de casos por edades en Colombia.
+5. ¿Cuál es la tasa de letalidad (porcentaje de fallecidos sobre total de casos)
+   por departamento?
+
+### Evidencia
+
+Una vista previa del cuaderno en JupyterHub:
+
+![Vista previa de preguntas de negocios.](screenshots/07-vista-previa-negocios.png)
+
+> [!NOTE]
+>
+> El cuaderno de esta sección se encuentra en
+> [`notebooks/preguntas-negocio-dataframes-sparksql.ipynb`](notebooks/preguntas-negocio-dataframes-sparksql.ipynb).

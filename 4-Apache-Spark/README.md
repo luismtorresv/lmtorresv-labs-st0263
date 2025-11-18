@@ -194,6 +194,13 @@ upload: ../../mnt/c/tmp/Casos_positivos_de_COVID-19_en_Colombia._20251117.csv to
 
 ![Datos de COVID-19 en S3.](screenshots/05-ins-s3.png)
 
+> [!NOTE]
+>
+> Quise usar este archivo enorme para aprovechar el poder de Spark, pero me
+> encontré con problemas de rendimiento al correr los notebooks. Por eso decidí
+> usar `datasets/covid19/Casos_positivos_de_COVID-19_en_Colombia-100K.csv` del
+> repositorio del curso. Con cien mil líneas basta y sirve para el ejercicio.
+
 ### Análisis exploratorio de datos
 
 1. Cargué los datos desde S3.
